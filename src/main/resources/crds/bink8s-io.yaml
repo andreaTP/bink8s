@@ -1,0 +1,45 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: imagebuilds.bink8s.io
+spec:
+  names:
+    plural: imagebuilds
+    singular: imagebuild
+    kind: ImageBuild
+    shortNames:
+      - ib
+  scope: Namespaced
+  group: bink8s.io
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                targetName:
+                  type: string
+                registryCredentials:
+                  type: string # Will be a secretRef
+                definition:
+                  type: string
+                podTemplate: # TO BE DONE
+                  type: string
+                allowInsecureRegistries: # TO BE DONE
+                  type: boolean
+              required:
+                - definition
+            status:
+              type: object
+              properties:
+                status:
+                  type: string
+                secretOutput: # write image data on a secret
+                  type: string # logs will be available in the Job
+      subresources:
+        status: {}

@@ -1,0 +1,5 @@
+domain: bink8s.io
+layout:
+- quarkus.javaoperatorsdk.io/v1-alpha
+projectName: bink8s
+version: "3"

@@ -1,0 +1,8 @@
+apiVersion: "bink8s.io/v1"
+kind: ImageBuild
+metadata:
+  name: my-basic-image-build
+spec:
+  definition: |
+    FROM busybox
+    ENTRYPOINT ["echo", "hello world!"]
